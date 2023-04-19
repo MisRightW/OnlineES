@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fengling.db.mapper.EsPaperRuleMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.fengling.db.mapper.entity.EsPaperRule">
+                <result column="id" property="id" />
+                <result column="gmt_create" property="gmtCreate" />
+                <result column="gmt_modified" property="gmtModified" />
+                <result column="creator" property="creator" />
+                <result column="modifier" property="modifier" />
+                <result column="deleted" property="deleted" />
+                <result column="title" property="title" />
+                <result column="subj_score" property="subjScore" />
+                <result column="obj_score" property="objScore" />
+                <result column="total_score" property="totalScore" />
+                <result column="total_time" property="totalTime" />
+                <result column="remark" property="remark" />
+                <result column="code" property="code" />
+                <result column="state" property="state" />
+                <result column="qualify_score" property="qualifyScore" />
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+                    id,
+                    gmt_create,
+                    gmt_modified,
+                    creator,
+                    modifier,
+                deleted, title, subj_score, obj_score, total_score, total_time, remark, code, state, qualify_score
+        </sql>
+
+</mapper>

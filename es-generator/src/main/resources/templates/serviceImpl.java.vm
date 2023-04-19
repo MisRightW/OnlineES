@@ -1,0 +1,63 @@
+package ${package.ServiceImpl};
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import ${package.Entity}.${entity};
+import ${package.Mapper}.${table.mapperName};
+import ${package.Service}.${table.serviceName};
+import ${superServiceImplClassPackage};
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+/**
+ * <p>
+ * $!{table.comment} 服务实现类
+ * </p>
+ *
+ * @author ${author}
+ * @since ${date}
+ */
+@Service
+@Transactional
+public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+
+
+    @Autowired
+    private ${table.mapperName} ${table.entityPath}Mapper;
+
+    @Override
+    public Page<${entity}> selectPage(${entity} param, Page page) {
+        QueryWrapper<${entity}> entityWrapper = new QueryWrapper<${entity}>();
+        getEntityWrapper(entityWrapper,param);
+        return super.page(page, entityWrapper);
+    }
+
+    @Override
+    public List<${entity}> selectList(${entity} param) {
+        QueryWrapper<${entity}> entityWrapper = new QueryWrapper<${entity}>();
+        getEntityWrapper(entityWrapper, param);
+        return super.list(entityWrapper);
+    }
+
+    /**
+     *  公共查询条件
+     * @param entityWrapper
+     * @return
+     */
+    public QueryWrapper<${entity}> getEntityWrapper(QueryWrapper<${entity}> entityWrapper,${entity} ${table.entityPath}){
+        QueryWrapper<${entity}> result = null;
+        //条件拼接
+    #foreach($field in ${table.fields})
+        #if(!${field.keyFlag} && ${field.propertyType} == "String")
+        if (StringUtils.isNotBlank(${table.entityPath}.get${field.capitalName}())){
+            result = entityWrapper.like("${field.name.toUpperCase()}",${table.entityPath}.get${field.capitalName}());
+        }
+        #end
+    #end
+        return result;
+    }
+}

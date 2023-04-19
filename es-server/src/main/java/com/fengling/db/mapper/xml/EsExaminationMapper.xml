@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fengling.db.mapper.EsExaminationMapper">
+
+        <!-- 通用查询映射结果 -->
+        <resultMap id="BaseResultMap" type="com.fengling.db.mapper.entity.EsExamination">
+                <result column="id" property="id" />
+                <result column="gmt_create" property="gmtCreate" />
+                <result column="gmt_modified" property="gmtModified" />
+                <result column="creator" property="creator" />
+                <result column="modifier" property="modifier" />
+                <result column="deleted" property="deleted" />
+                <result column="title" property="title" />
+                <result column="content" property="content" />
+                <result column="open" property="open" />
+                <result column="password" property="password" />
+                <result column="state" property="state" />
+                <result column="rule_id" property="ruleId" />
+                <result column="time_limit" property="timeLimit" />
+                <result column="start_time" property="startTime" />
+                <result column="end_time" property="endTime" />
+                <result column="subj_score" property="subjScore" />
+                <result column="obj_score" property="objScore" />
+                <result column="total_score" property="totalScore" />
+                <result column="total_time" property="totalTime" />
+                <result column="qualify_score" property="qualifyScore" />
+        </resultMap>
+
+        <!-- 通用查询结果列 -->
+        <sql id="Base_Column_List">
+                    id,
+                    gmt_create,
+                    gmt_modified,
+                    creator,
+                    modifier,
+                deleted, title, content, open, password, state, rule_id, time_limit, start_time, end_time, subj_score, obj_score, total_score, total_time, qualify_score
+        </sql>
+
+</mapper>
